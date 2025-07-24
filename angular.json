@@ -22,7 +22,12 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              {
+    "glob": ".nojekyll",
+    "input": "src",
+    "output": "./"
+  }
             ],
             "styles": [
               "src/styles.css"
