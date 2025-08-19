@@ -3,7 +3,7 @@ name: Deploy Angular App to GitHub Pages
 on:
   push:
     branches:
-      - main  # change if your default branch is 'master'
+      - main
 
 jobs:
   build-deploy:
@@ -25,11 +25,10 @@ jobs:
       - name: Build Angular app
         run: |
           npm run build -- --configuration production --base-href "/protiflo_25/"
-          # SPA routing fix for GitHub Pages (refresh on deep links):
-          cp "dist/<DIST_FOLDER_NAME>/index.html" "dist/<DIST_FOLDER_NAME>/404.html"
+          cp "dist/protiflo_25/index.html" "dist/protiflo_25/404.html"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/<DIST_FOLDER_NAME>
+          folder: dist/protiflo_25
