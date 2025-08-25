@@ -48,7 +48,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/protiflo_25/"
+              "baseHref": "./"
             },
             "development": {
               "optimization": false,

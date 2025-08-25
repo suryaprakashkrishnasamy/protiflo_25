@@ -34,7 +34,7 @@ jobs:
       
     - name: Build Angular app
       run: |
-        npm run build -- --configuration production --base-href "/protiflo_25/"
+        npm run build -- --configuration production --base-href "./"
         cp "dist/protiflo_25/browser/index.html" "dist/protiflo_25/browser/404.html"
       
     - name: Setup Pages

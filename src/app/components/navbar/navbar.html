@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="container">
+    <a routerLink="/" class="navbar-brand">
+      <span class="brand-text">Surya Prakash K</span>
+    </a>
+    
+    <button class="mobile-toggle" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen">
+      <span class="hamburger-line" [class.active]="isMenuOpen"></span>
+      <span class="hamburger-line" [class.active]="isMenuOpen"></span>
+      <span class="hamburger-line" [class.active]="isMenuOpen"></span>
+    </button>
+    
+    <ul class="navbar-nav" [class.active]="isMenuOpen">
+      <li class="nav-item">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link" (click)="isMenuOpen = false">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/about" routerLinkActive="active" class="nav-link" (click)="isMenuOpen = false">About</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/projects" routerLinkActive="active" class="nav-link" (click)="isMenuOpen = false">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link" (click)="isMenuOpen = false">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
