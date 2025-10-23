@@ -68,6 +68,16 @@
               <p>Thank you for your message! I'll get back to you soon.</p>
             </div>
 
+            <!-- Error Message -->
+            <div class="error-message" *ngIf="showErrorMessage">
+              <div class="error-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <p>Sorry, there was an error sending your message. Please try again or email me directly.</p>
+            </div>
+
             <form (ngSubmit)="onSubmit()" #contactFormRef="ngForm" class="contact-form">
               <div class="form-group">
                 <label for="name" class="form-label">Name *</label>
