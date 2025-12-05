@@ -6,7 +6,7 @@
         <div class="about-content">
           <div class="about-intro">
             <p class="lead">
-              I'm <strong>Surya Prakash K</strong>, a passionate .NET Full Stack Developer with <strong>2.5+ years</strong> 
+              I'm <strong>Surya Prakash K</strong>, a passionate .NET Full Stack Developer with <strong>3+ years</strong> 
               of experience in building robust, scalable applications. Currently working at <strong>RFID4U</strong> since November 2022, 
               I specialize in creating comprehensive solutions that bridge frontend and backend technologies.
             </p>
@@ -15,30 +15,17 @@
           <div class="skills-section">
             <h2 class="mb-3">Technical Skills</h2>
             <div class="skills-grid">
-              <div class="skill-category">
-                <h3>Backend Development</h3>
+              <div class="skill-category" *ngFor="let category of ['Backend Development', 'Frontend Development', 'Cloud & Others']">
+                <h3>{{ category }}</h3>
                 <div class="skills-tags">
-                  <span class="skills-tag">.NET</span>
-                  <span class="skills-tag">C#</span>
-                  <span class="skills-tag">API Development</span>
-                  <span class="skills-tag">SQL</span>
-                </div>
-              </div>
-              <div class="skill-category">
-                <h3>Frontend Development</h3>
-                <div class="skills-tags">
-                  <span class="skills-tag">Angular</span>
-                  <span class="skills-tag">HTML</span>
-                  <span class="skills-tag">CSS</span>
-                  <span class="skills-tag">JavaScript</span>
-                </div>
-              </div>
-              <div class="skill-category">
-                <h3>Cloud & Others</h3>
-                <div class="skills-tags">
-                  <span class="skills-tag">Cloud</span>
-                  <span class="skills-tag">Accessibility (508 compliance)</span>
-                  <span class="skills-tag">SQL Optimization</span>
+                  <button 
+                    class="skills-tag clickable" 
+                    *ngFor="let skill of getSkillsByCategory(category)"
+                    (click)="openSkillModal(skill)"
+                    [title]="'Click to learn more about ' + skill.name"
+                  >
+                    {{ skill.name }}
+                  </button>
                 </div>
               </div>
             </div>
@@ -93,3 +80,41 @@
     </div>
   </div>
 </section>
+
+<!-- Skill Modal -->
+<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()" *ngIf="selectedSkill">
+    <div class="modal-header">
+      <h2>{{ selectedSkill.name }}</h2>
+      <button class="close-btn" (click)="closeModal()" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="skill-definition">
+        <h3>Definition</h3>
+        <p>{{ selectedSkill.definition }}</p>
+      </div>
+      
+      <div class="skill-description">
+        <h3>Description</h3>
+        <p>{{ selectedSkill.description }}</p>
+      </div>
+      
+      <div class="interview-questions">
+        <h3>Common Interview Questions</h3>
+        <div class="question-item" *ngFor="let qa of selectedSkill.interviewQuestions; let i = index">
+          <div class="question">
+            <h4>Q{{ i + 1 }}: {{ qa.question }}</h4>
+          </div>
+          <div class="answer">
+            <p><strong>Answer:</strong> {{ qa.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
